@@ -1,0 +1,2 @@
+#!/bin/bash
+printf -v result "%d" "$(( $(echo $WATER | tr 'water' '0') + $(echo $STIR | tr 'stir' '1') ))"
