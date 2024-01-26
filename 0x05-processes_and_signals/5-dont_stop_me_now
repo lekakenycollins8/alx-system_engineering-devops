@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# stops 4-to_infinity_and_beyond process
+
+# get pid of program
+pid=$(pgrep "bash ./4-to_infinity_and_beyond" -f)
+
+# terminate process
+if [ -n "$pid" ]; then
+	kill -15 "$pid"
+fi
