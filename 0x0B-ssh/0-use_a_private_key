@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Bash script that uses ssh to connect to your server using the private key
+
+HOST="18.207.207.223"
+USER="ubuntu"
+PRIVATE_KEY="~/.ssh/school"
+
+ssh -i $PRIVATE_KEY $USER@$HOST
