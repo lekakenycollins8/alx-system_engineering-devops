@@ -1,12 +1,13 @@
 # client configuration with puppet
 
-file {'/root/alx-system_engineering-devops/0x0B-ssh/ssh_config':
-  ensure  => present,
-  content => "
-		Host 18.207.207.223
-		    IdentityFile ~/.ssh/school
-		    PasswordAuthentication no",
-  owner   =>root,
-  group   => root,
-  mode    => '0744',
+file_line {'Turn off password auth':
+ensure => 'present',
+path   => 'etc/ssh/ssh_config',
+line   => '    PasswordAuthentication no',
+}
+
+file_line {'identity file':
+ensure => 'present',
+path   => 'etc/ssh/ssh_config',
+line   => '    IdentityFile ~/.ssh/school',
 }
