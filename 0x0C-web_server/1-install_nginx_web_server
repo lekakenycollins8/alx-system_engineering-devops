@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # installing nginx web server
 
-apt-get update
-apt-get install -y nginx
+sudo apt update
+sudo apt install -y nginx
 
 sed -i 's/^\(listen\s*)80;/\180;g' /etc/nginx/sites-available/default
-echo "Hello World!" > /var/www/html/index.html
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
 
 service nginx start
