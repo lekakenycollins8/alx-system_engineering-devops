@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Change your home IP
+cp /etc/hosts ~/hosts.new
+sed -i 's/^127.0.0.2.*/127.0.0.1 localhost/g' ~/hosts.new
+echo "31.13.66.35 facebook.com" >> ~/hosts.new
+cp -f ~/hosts.new /etc/hosts
