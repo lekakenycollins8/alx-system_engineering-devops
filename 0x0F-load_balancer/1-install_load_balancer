@@ -9,18 +9,17 @@ sudo apt-get -y update
 sudo apt-get -y install haproxy
 
 # Append configuration to HAProxy configuration file using sed
-sudo sed -i '/^frontend.*$/a \
-        bind *:80\n\
-        mode http\n\
-        default_backend lekycollins-backend\n\
-' /etc/haproxy/haproxy.cfg
-
-sudo sed -i '/^backend.*$/a \
-        balance roundrobin\n\
-        server 499637-web-01 18.207.207.223 check\n\
-        server 499637-web-02 100.26.221.105 check\n\
-' /etc/haproxy/haproxy.cfg
+cat <<EOF > /etc/haproxy/haproxy.cfg
+frontend lekycollins-frontend
+        bind *:80
+        mode http
+        default_backend lekycollins-backend
+backend lekycollins-backend
+        balance roundrobin
+        server 499637-web-01 18.207.207.223 check
+        server 499637-web-02 100.26.221.105 check
+EOF
 # ha proxy to be started by init script
 echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
 # Restart HAProxy
-sudo service haproxy restart
+service haproxy restart
