@@ -21,7 +21,6 @@ sudo sed -i '/^backend.*$/a \
         server 499637-web-02 100.26.221.105 check\n\
 ' /etc/haproxy/haproxy.cfg
 # ha proxy to be started by init script
-sudo systemctl enable haproxy
-
+echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
 # Restart HAProxy
-sudo systemctl restart haproxy
+sudo service haproxy restart
