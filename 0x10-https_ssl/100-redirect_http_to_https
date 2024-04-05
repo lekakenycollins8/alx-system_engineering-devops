@@ -37,13 +37,12 @@ frontend lekycollins-frontend-http
         bind *:80
         mode http
         http-request set-header X-Forwarded-Proto http
-        http-request redirect scheme https unless { ssl_fc }
+        http-request redirect scheme https code 301 if !{ ssl_fc }
 	default_backend lekycollins-backend
 
 frontend lekycollins-frontend-https
         bind *:443 ssl crt /etc/haproxy/certs/www.lekycollins.tech.pem
 	http-request set-header X-Forwarded-Proto https
-	http-request redirect scheme https unless { ssl_fc }
         default_backend lekycollins-backend
 backend lekycollins-backend
         balance roundrobin
