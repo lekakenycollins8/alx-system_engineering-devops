@@ -5,14 +5,15 @@
 import requests
 from sys import argv
 
+
 def number_of_subscribers(subreddit):
     """returns total no.of subscribers of a subreddit"""
     if subreddit is None or not isinstance(subreddit, str):
         return 0
 
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-
-    response = requests.get(url, headers={"User-Agent": "Google Chrome Version 81.0.4044.129"})
+    user_agent = {"User-Agent": "Google Chrome Version 81.0.4044.129"}
+    response = requests.get(url, headers=user_agent)
     if response.status_code == 200:
         try:
             data = response.json()
