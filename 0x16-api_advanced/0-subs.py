@@ -2,7 +2,6 @@
 """Gets number of subscribers of a subreddit"""
 
 
-from sys import argv
 import requests
 
 
