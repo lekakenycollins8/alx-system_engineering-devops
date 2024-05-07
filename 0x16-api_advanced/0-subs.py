@@ -2,8 +2,8 @@
 """Gets number of subscribers of a subreddit"""
 
 
-import requests
 from sys import argv
+import requests
 
 
 def number_of_subscribers(subreddit):
