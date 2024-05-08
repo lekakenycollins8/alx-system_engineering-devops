@@ -17,7 +17,7 @@ def top_ten(subreddit):
     response = requests.get(url, headers=user_agent, params=parameters)
     try:
         data = response.json()
-        host_posts = data.get('data').get('children')
+        hot_posts = data.get('data').get('children')
 
         for i in hot_posts:
             print(i.get('data').get('title'))

@@ -11,7 +11,7 @@ def number_of_subscribers(subreddit):
         return 0
 
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    user_agent = {"User-Agent": "Google Chrome Version 81.0.4044.129"}
+    user_agent = {"User-Agent": "your bot 0.1"}
     response = requests.get(url, headers=user_agent)
     if response.status_code == 200:
         try:
